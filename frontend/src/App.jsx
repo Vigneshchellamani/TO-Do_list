@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import TodoItem from "./component/TodoItems";
 
-const API_URL = "http://localhost:3000/api/tasks"; // ✅ make sure backend runs on port 5000
+const API_URL = process.env.API_URL; // ✅ make sure backend runs on port 5000
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -39,7 +39,9 @@ function App() {
   // Toggle complete
   const toggleComplete = async (id, completed) => {
     try {
-      const res = await axios.put(`${API_URL}/${id}`, { completed: !completed });
+      const res = await axios.put(`${API_URL}/${id}`, {
+        completed: !completed,
+      });
       setTasks(tasks.map((t) => (t._id === id ? res.data : t)));
     } catch (err) {
       console.error("Error updating completion:", err);
@@ -76,7 +78,9 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}>
+    <div
+      style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}
+    >
       <h1>📝 To-Do List</h1>
 
       <div style={{ display: "flex", gap: "5px", justifyContent: "center" }}>
