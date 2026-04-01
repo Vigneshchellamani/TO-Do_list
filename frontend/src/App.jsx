@@ -82,7 +82,7 @@ function App() {
     <div
       style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}
     >
-      <h1>📝 To-Do List</h1>
+      <h1>📝 To-Do List list</h1>
 
       <div style={{ display: "flex", gap: "5px", justifyContent: "center" }}>
         <input
